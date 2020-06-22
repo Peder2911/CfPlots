@@ -2,10 +2,14 @@
 import logging
 import azure.functions as func
 from __app__.constants import FORMATS,MIME
+from __app__.settings import SETTINGS
+
 from io import BytesIO
 from matplotlib import pyplot as plt
 
 def outputPlot(fn):
+    plt.style.use(SETTINGS["style"])
+
     def respondWithPlot(req: func.HttpRequest) -> func.HttpResponse:
         logging.info('Python HTTP trigger function processed a request.')
 
@@ -14,7 +18,7 @@ def outputPlot(fn):
 
         b = BytesIO()
 
-        fn()
+        fn(**req.params)
 
         plt.savefig(b,format=fmt)
         b.seek(0)
