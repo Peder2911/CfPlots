@@ -18,7 +18,12 @@ def outputPlot(fn):
 
         b = BytesIO()
 
-        fn(**req.params)
+        try:
+            fn(**req.params)
+        except Exception as e:
+            return func.HttpResponse(
+                str(e)
+            )
 
         plt.savefig(b,format=fmt)
         b.seek(0)
