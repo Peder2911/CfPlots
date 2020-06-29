@@ -1,10 +1,9 @@
 
-# SwarmPlot
+# CfPlots 
 
-An Azure Functions app that makes it easy to set up matplotlib functions as
-web-endpoints, which again makes it possible to live-generate plots by pointing
-such functions at APIs. 
+An Azure Functions thing that functions as a visual frontend for an API that
+serves data about Ceasefires. The plots can be retrieved in many different
+formats, and filtered using URL query parameters, which makes them easy to
+integrate into different contexts.
 
-The pros of this is that it is convenient and really easy to set up!
 
-It
